@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import FlightSearch from './components/FlightSearch';
-import FlightCard from './components/FligthtCard';
+import FlightCard from './components/FlightCard';
 import BookingModal from './components/BookingModal';
 import { FLIGHTS_CATALOG } from './data/flightsData';
 import './App.css';

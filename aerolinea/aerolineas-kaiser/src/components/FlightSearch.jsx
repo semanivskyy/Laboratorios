@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AIRPORTS } from '../data/flightsData';
 
 export default function FlightSearch({ onSearch }) {

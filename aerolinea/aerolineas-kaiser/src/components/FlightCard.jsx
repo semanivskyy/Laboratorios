@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TARIFF_TYPES } from '../data/flightsData';
 
 export default function FlightCard({ flight, passengers, onSelectFlight }) {

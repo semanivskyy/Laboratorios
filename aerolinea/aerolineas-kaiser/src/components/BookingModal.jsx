@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function BookingModal({ booking, onClose, onConfirm }) {
   if (!booking) return null;
