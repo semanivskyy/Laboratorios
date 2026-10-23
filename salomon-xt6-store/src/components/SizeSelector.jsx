@@ -1,5 +1,4 @@
 // src/components/SizeSelector.jsx
-import React from 'react';
 import { Ruler } from 'lucide-react';
 
 export default function SizeSelector({ sizes, selectedSize, onSelectSize }) {

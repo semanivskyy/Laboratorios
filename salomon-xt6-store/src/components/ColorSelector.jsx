@@ -1,5 +1,4 @@
 // src/components/ColorSelector.jsx
-import React from 'react';
 
 export default function ColorSelector({ variants, activeVariant, onSelectVariant }) {
   return (

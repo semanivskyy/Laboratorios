@@ -1,5 +1,4 @@
 // src/components/CartDrawer.jsx
-import React from 'react';
 import { X, Trash2, ArrowRight } from 'lucide-react';
 
 export default function CartDrawer({ isOpen, onClose, cartItems, onRemoveItem }) {

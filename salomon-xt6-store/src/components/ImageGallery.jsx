@@ -1,5 +1,5 @@
 // src/components/ImageGallery.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ZoomIn } from 'lucide-react';
 
 export default function ImageGallery({ images, productName }) {

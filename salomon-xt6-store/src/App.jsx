@@ -1,18 +1,29 @@
 // src/App.jsx
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import ImageGallery from './components/ImageGallery';
-import ColorSelector from './components/ColorSelector';
-import SizeSelector from './components/SizeSelector';
-import TechnicalSpecs from './components/TechnicalSpecs';
-import CartDrawer from './components/CartDrawer';
-import { PRODUCT_DATA } from './data/shoesData';
-import { Truck, RotateCcw, Shield, Star, Check } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
+import ImageGallery from "./components/ImageGallery";
+import ColorSelector from "./components/ColorSelector";
+import SizeSelector from "./components/SizeSelector";
+import TechnicalSpecs from "./components/TechnicalSpecs";
+import CartDrawer from "./components/CartDrawer";
+import { PRODUCT_DATA } from "./data/shoesData";
+import { Truck, RotateCcw, Shield, Star, Check } from "lucide-react";
 
 export default function App() {
   const [activeVariant, setActiveVariant] = useState(PRODUCT_DATA.variants[0]);
   const [selectedSize, setSelectedSize] = useState(null);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      const saved = localStorage.getItem("salomon-cart");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("salomon-cart", JSON.stringify(cart));
+  }, [cart]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [addedAnimation, setAddedAnimation] = useState(false);
 
@@ -29,7 +40,7 @@ export default function App() {
       size: selectedSize.eur,
       price: PRODUCT_DATA.price,
       image: activeVariant.thumbnail,
-      quantity: 1
+      quantity: 1,
     };
 
     setCart([...cart, newItem]);
@@ -50,9 +61,13 @@ export default function App() {
 
       {/* Breadcrumb técnico estilo Salomon */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 w-full text-[11px] font-mono text-neutral-500 uppercase tracking-wider flex items-center gap-2">
-        <a href="#" className="hover:text-black">Calzado</a>
+        <a href="#" className="hover:text-black">
+          Calzado
+        </a>
         <span>/</span>
-        <a href="#" className="hover:text-black">Sportstyle</a>
+        <a href="#" className="hover:text-black">
+          Sportstyle
+        </a>
         <span>/</span>
         <span className="text-neutral-900 font-bold">XT-6</span>
       </div>
@@ -60,19 +75,17 @@ export default function App() {
       {/* Contenedor Principal: Layout Asimétrico Salomon */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          
           {/* Columna Izquierda: Galería Inmersiva (7 columnas en desktop) */}
           <section className="lg:col-span-7">
-            <ImageGallery 
-              images={activeVariant.images} 
-              productName={PRODUCT_DATA.name} 
+            <ImageGallery
+              images={activeVariant.images}
+              productName={PRODUCT_DATA.name}
             />
           </section>
 
           {/* Columna Derecha: Panel de Compra y Datos Técnicos (5 columnas) */}
           <section className="lg:col-span-5 flex flex-col justify-start">
             <div className="sticky top-24 space-y-6">
-              
               {/* Badge & Título */}
               <div className="space-y-1.5">
                 <span className="inline-block bg-neutral-900 text-white text-[9px] font-mono font-bold tracking-widest px-2 py-0.5 uppercase rounded-sm">
@@ -92,32 +105,38 @@ export default function App() {
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </div>
-                  <span className="text-xs font-mono font-bold">{PRODUCT_DATA.rating}</span>
-                  <span className="text-xs text-neutral-400">({PRODUCT_DATA.reviewsCount} opiniones verificadas)</span>
+                  <span className="text-xs font-mono font-bold">
+                    {PRODUCT_DATA.rating}
+                  </span>
+                  <span className="text-xs text-neutral-400">
+                    ({PRODUCT_DATA.reviewsCount} opiniones verificadas)
+                  </span>
                 </div>
               </div>
 
               {/* Precio */}
               <div className="text-2xl font-mono font-bold text-neutral-950">
                 {PRODUCT_DATA.price.toFixed(2)} €
-                <span className="text-[11px] font-sans font-normal text-neutral-500 ml-2">IVA incluido</span>
+                <span className="text-[11px] font-sans font-normal text-neutral-500 ml-2">
+                  IVA incluido
+                </span>
               </div>
 
               {/* Selector de Variante Cromática */}
-              <ColorSelector 
-                variants={PRODUCT_DATA.variants} 
-                activeVariant={activeVariant} 
+              <ColorSelector
+                variants={PRODUCT_DATA.variants}
+                activeVariant={activeVariant}
                 onSelectVariant={(variant) => {
                   setActiveVariant(variant);
                   setSelectedSize(null); // Reset de talla al cambiar modelo
-                }} 
+                }}
               />
 
               {/* Selector de Tallas */}
-              <SizeSelector 
-                sizes={PRODUCT_DATA.sizes} 
-                selectedSize={selectedSize} 
-                onSelectSize={setSelectedSize} 
+              <SizeSelector
+                sizes={PRODUCT_DATA.sizes}
+                selectedSize={selectedSize}
+                onSelectSize={setSelectedSize}
               />
 
               {/* Botón de Añadir a la Bolsa */}
@@ -126,8 +145,8 @@ export default function App() {
                   onClick={handleAddToCart}
                   className={`w-full py-4 px-6 rounded font-mono font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
                     addedAnimation
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-neutral-950 hover:bg-red-600 text-white shadow-lg hover:shadow-red-600/20'
+                      ? "bg-emerald-600 text-white"
+                      : "bg-neutral-950 hover:bg-red-600 text-white shadow-lg hover:shadow-red-600/20"
                   }`}
                 >
                   {addedAnimation ? (
@@ -135,7 +154,7 @@ export default function App() {
                       <Check className="w-4 h-4" /> AÑADIDO A LA BOLSA
                     </>
                   ) : (
-                    'AÑADIR A LA BOLSA'
+                    "AÑADIR A LA BOLSA"
                   )}
                 </button>
               </div>
@@ -157,33 +176,35 @@ export default function App() {
               </div>
 
               {/* Ficha técnica y acordeón */}
-              <TechnicalSpecs 
-                technologies={PRODUCT_DATA.technologies} 
-                specs={PRODUCT_DATA.specs} 
+              <TechnicalSpecs
+                technologies={PRODUCT_DATA.technologies}
+                specs={PRODUCT_DATA.specs}
               />
-
             </div>
           </section>
-
         </div>
       </main>
 
       {/* Drawer Carrito */}
-      <CartDrawer 
-        isOpen={isCartOpen} 
-        onClose={() => setIsCartOpen(false)} 
-        cartItems={cart} 
-        onRemoveItem={handleRemoveFromCart} 
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cartItems={cart}
+        onRemoveItem={handleRemoveFromCart}
       />
 
       {/* Footer Técnico */}
       <footer className="bg-neutral-950 text-neutral-400 mt-20 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono">
-          <p>© 2026 SALOMON LAB PROJECT — Práctica Académica de Ingeniería Web.</p>
+          <p>
+            © 2026 SALOMON LAB PROJECT — Práctica Académica de Ingeniería Web.
+          </p>
           <div className="flex gap-6 uppercase tracking-wider">
             <span className="hover:text-white cursor-pointer">Privacidad</span>
             <span className="hover:text-white cursor-pointer">Términos</span>
-            <span className="hover:text-white cursor-pointer">Soporte Técnico</span>
+            <span className="hover:text-white cursor-pointer">
+              Soporte Técnico
+            </span>
           </div>
         </div>
       </footer>

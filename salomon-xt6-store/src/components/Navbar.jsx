@@ -1,4 +1,3 @@
-import React from 'react';
 import { ShoppingBag, Search, Heart, Menu } from 'lucide-react';
 
 export default function Navbar({ cartCount, onOpenCart }) {

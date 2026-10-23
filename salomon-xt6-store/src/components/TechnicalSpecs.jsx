@@ -1,6 +1,6 @@
 // src/components/TechnicalSpecs.jsx
-import React, { useState } from 'react';
-import { ChevronDown, ShieldCheck, Mountain, Activity } from 'lucide-react';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 export default function TechnicalSpecs({ technologies, specs }) {
   const [openTab, setOpenTab] = useState('technologies');
