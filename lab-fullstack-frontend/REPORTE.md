@@ -1,6 +1,6 @@
 # Reporte comparativo: HTML5/Bootstrap + JS Vanilla vs React
 
-**Alumno:** Genrikh Semanivskyy SLobodenyuk  **Fecha:** 22/10/2026
+**Alumno:** Genrikh Semanivskyy Slobodenyuk  **Fecha:** 22/10/2026
 
 ## 1. Descripción
 
@@ -8,11 +8,8 @@ Un mismo backend REST (Node.js + Express, puerto 3000) con CRUD de tareas es con
 
 ## 2. Evidencias
 
-- Backend probado con `pruebas.http` (GET, POST, PUT, DELETE): ver `evidencias/`.
-- Cliente 1 funcionando con Live Server: CAPTURA.
-- Cliente 2 funcionando en `localhost:5173`: CAPTURA.
-- Ambos clientes mostrando los mismos datos de la API: CAPTURA.
-- Manejo de error con el backend apagado: CAPTURA.
+- Backend probado con `pruebas.http` (GET, POST, PUT, DELETE): ver `../evidencias/`.
+- Cliente 1 (HTML5 + Bootstrap) funcionando: ver `../evidencias/Captura de pantalla 2026-09-17 155711.png`.
 
 ## 3. Comparación
 

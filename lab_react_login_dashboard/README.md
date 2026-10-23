@@ -1,16 +1,44 @@
-# React + Vite
+# Login y Dashboards por rol — Laboratorio React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación de inicio de sesión con datos simulados (`src/data/users.js`). Según el rol del usuario se muestra un dashboard distinto:
 
-Currently, two official plugins are available:
+- **admin** → `AdminDashboard`
+- **user** → `UserDashboard`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Cómo ejecutarlo
 
-## React Compiler
+    npm install
+    npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Se abre en `http://localhost:5173`.
 
-## Expanding the ESLint configuration
+## Usuarios de prueba
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Rol | Correo | Contraseña |
+|---|---|---|
+| admin | `admin@escuela.edu` | `admin123` |
+| user | `luis@escuela.edu` | `user123` |
+| user | `maria@escuela.edu` | `user123` |
+| user | `carlos@escuela.edu` | `user123` |
+
+## Estructura
+
+    src/
+    ├── components/
+    │   ├── common/      Card, Button, InputField
+    │   ├── layout/      DashboardLayout, Navbar, Sidebar
+    │   └── dashboard/   DataTable, ProgressBar, StatCard
+    ├── data/users.js    Usuarios y cursos simulados
+    ├── pages/           LoginPage, AdminDashboard, UserDashboard
+    └── App.jsx          Decide qué pantalla mostrar según el usuario
+
+## Scripts
+
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Compilación para producción |
+| `npm run preview` | Vista previa de la compilación |
+| `npm run lint` | Revisión con ESLint |
+
+> Las credenciales están en el código solo con fines didácticos; en un proyecto real la autenticación se haría en un backend.

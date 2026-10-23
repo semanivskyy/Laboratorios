@@ -1,16 +1,34 @@
-# React + Vite
+# Clima — Laboratorio React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Muestra el clima actual de una ciudad elegida en un selector. Consulta la API pública [Open-Meteo](https://open-meteo.com/) (no requiere API key) y muestra temperatura, sensación térmica, humedad, viento y condición del cielo. La tarjeta cambia de estilo entre día y noche.
 
-Currently, two official plugins are available:
+## Cómo ejecutarlo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+    npm install
+    npm run dev
 
-## React Compiler
+Se abre en `http://localhost:5173`. Necesita conexión a internet para consultar la API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Ciudades disponibles
 
-## Expanding the ESLint configuration
+Montemorelos, Monterrey, Ciudad de México, Guadalajara, Cancún y Tijuana. Se pueden agregar más en `src/data/ciudades.js`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Estructura
+
+    src/
+    ├── components/
+    │   ├── Clima.jsx          Componente principal (fetch, carga, error)
+    │   └── Clima.module.css   Estilos con CSS Modules
+    ├── data/
+    │   ├── ciudades.js        Ciudades y coordenadas
+    │   └── weatherCodes.js    Códigos del clima y su descripción
+    └── App.jsx
+
+## Scripts
+
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Compilación para producción |
+| `npm run preview` | Vista previa de la compilación |
+| `npm run lint` | Revisión con ESLint |
