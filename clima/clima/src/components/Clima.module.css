@@ -1,0 +1,128 @@
+.card {
+  max-width: 380px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: background 0.4s;
+}
+
+/* Fondo de noche cuando la API indica is_day = 0 */
+.noche {
+  background: linear-gradient(135deg, #1e3a5f, #3b2f6b);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.select {
+  align-self: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.select option {
+  color: #1e293b;
+}
+
+.fila {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1rem 0;
+}
+
+.miniCard {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  padding: 0.9rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  backdrop-filter: blur(4px);
+}
+
+.icono {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.temp {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin: 0.2rem 0;
+}
+
+.detail {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.detailSmall {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.dato {
+  margin: 0.4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.datoValor {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.boton {
+  margin-top: 0.8rem;
+  padding: 0.45rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.message {
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 420px) {
+  .fila {
+    flex-direction: column;
+  }
+}

@@ -1,11 +1,7 @@
-import Clima from './components/clima';
+import Clima from './components/Clima';
 
 function App() {
-  return (
-    <div>
-      <Clima />
-    </div>
-  );
+  return <Clima />;
 }
 
 export default App;
