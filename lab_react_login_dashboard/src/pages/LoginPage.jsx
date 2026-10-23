@@ -1,26 +1,28 @@
-import { useState } from 'react';
-import Card from '../components/common/Card'
-import InputField from '../components/common/InputField';
-import Button from '../components/common/Button';
-import { users } from '../data/users';
- 
+import { useState } from "react";
+import Card from "../components/common/Card";
+import InputField from "../components/common/InputField";
+import Button from "../components/common/Button";
+import { users } from "../data/users";
+
 const LoginPage = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
- 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault(); // evita que la página se recargue
-    const found = users.find((u) => u.email === email && u.password === password);
- 
+    const found = users.find(
+      (u) => u.email === email && u.password === password,
+    );
+
     if (found) {
-      setError('');
+      setError("");
       onLogin(found);
     } else {
-      setError('Correo o contraseña incorrectos');
+      setError("Correo o contraseña incorrectos");
     }
   };
- 
+
   return (
     <div className="login-page">
       <Card title="Iniciar sesión">
@@ -35,12 +37,20 @@ const LoginPage = ({ onLogin }) => {
           />
           <InputField
             label="Contraseña"
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="********"
           />
+          <div className="toggle-password">
+            <Button
+              variant="secondary"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+            </Button>
+          </div>
           {error && <p className="error">{error}</p>}
           <Button type="submit" fullWidth>
             Entrar
@@ -50,5 +60,5 @@ const LoginPage = ({ onLogin }) => {
     </div>
   );
 };
- 
+
 export default LoginPage;

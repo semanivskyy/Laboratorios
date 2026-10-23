@@ -28,6 +28,7 @@ const AdminDashboard = ({ user, onLogout }) => {
     <DashboardLayout
       user={user}
       onLogout={onLogout}
+      logoutVariant="danger"
       menuItems={menuItems}
       activeItem={section}
       onSelect={setSection}

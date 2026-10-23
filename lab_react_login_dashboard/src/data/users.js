@@ -3,6 +3,7 @@ export const users = [
   { id: 1, name: 'Ana Torres', email: 'admin@escuela.edu', password: 'admin123', role: 'admin' },
   { id: 2, name: 'Luis Pérez', email: 'luis@escuela.edu', password: 'user123', role: 'user' },
   { id: 3, name: 'María López', email: 'maria@escuela.edu', password: 'user123', role: 'user' },
+  { id: 4, name: 'Carlos Ruiz', email: 'carlos@escuela.edu', password: 'user123', role: 'user' },
 ];
  
 export const courses = [

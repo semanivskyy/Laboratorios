@@ -4,6 +4,7 @@ import Card from '../components/common/Card';
 import StatCard from '../components/dashboard/StatCard';
 import DataTable from '../components/dashboard/DataTable';
 import { courses } from '../data/users';
+import ProgressBar from '../components/dashboard/ProgressBar';
  
 const menuItems = ['Inicio', 'Mis cursos', 'Mi perfil'];
  
@@ -45,6 +46,7 @@ const UserDashboard = ({ user, onLogout }) => {
           <p><strong>Nombre:</strong> {user.name}</p>
           <p><strong>Correo:</strong> {user.email}</p>
           <p><strong>Rol:</strong> Usuario registrado</p>
+          <ProgressBar label="Avance promedio" value={average} />
         </Card>
       )}
     </DashboardLayout>
